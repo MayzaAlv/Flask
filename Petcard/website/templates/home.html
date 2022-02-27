@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1 align="center">Your Pet</h1>
+<div class="petlist" id="petcard">
+    {% for pet in petcard %}
+        <div class="card-pet">
+            <div class="pet-image-div">
+                <img class="pet-image" src="{{ url_for('views.render_image', id=pet.id)}}"/>
+                <div class="pet-edit-delete">
+                    <a href="{{ url_for('views.edit_petcard', id=pet.id) }}">
+                        <span>
+                            <img src={{ url_for('static', filename='edit.png') }} />
+                        </span>
+                    </a>
+                    <a href="{{ url_for('views.delete_petcard', id=pet.id) }}">
+                        <span>
+                            <img src={{ url_for('static', filename='delete.png') }} />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="pet-content">
+                <h5 class="card-title text-light"><strong>{{ pet.name }}</strong></h5>
+                <h6 class="card-subtitle mb-2 text-light">{{ pet.user.username }}</h6>
+                <h6 class="card-subtitle mb-2 text-light">{{ pet.breed }}</h6>
+                <h6 class="card-subtitle mb-2 text-light">{{ 'Female' if pet.gender == 'F' else 'Male' }}</h6>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

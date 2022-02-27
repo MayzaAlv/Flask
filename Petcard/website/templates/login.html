@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <form class="box" action="#" method="post">
+    <h1>Login</h1>
+    <div class="message">
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+      <input type="email" name="email" placeholder="Email"/>
+      <input type="password" name="password" placeholder="Password"/>
+      <input type="submit" name="" value="Login">
+      <input type="button" onclick="location.href='/signin';" value="Sign in"/>
+  </form>
+{% endblock %}
